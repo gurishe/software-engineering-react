@@ -1,3 +1,11 @@
+# Ernie Gurish
+
+## CS5500 - Fall 2022
+
+A React app for Foundations of Software Engineering
+
+*Based on https://github.com/jannunzi/software-engineering-react*
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
