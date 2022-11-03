@@ -4,7 +4,10 @@ import {
     findTuitById,
     findAllTuits
 } from "../services/tuits-service";
-import {createUser, deleteUsersByUsername} from "../services/users-service";
+import {
+    createUser,
+    deleteUsersByUsername
+} from "../services/users-service";
 
 describe('can create tuit with REST API', () => {
     const user = {
