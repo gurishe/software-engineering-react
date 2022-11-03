@@ -127,7 +127,7 @@ describe('findAllUsers',  () => {
   afterAll(async () => {
     // delete the users we inserted
     for (const username of usernames) {
-      await deleteUsersByUsername(username)
+      await deleteUsersByUsername(username);
     }
   });
 
