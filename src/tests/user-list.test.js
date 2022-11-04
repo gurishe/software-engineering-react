@@ -13,7 +13,8 @@ test('user list renders static user array', () => {
   render(
     <HashRouter>
       <UserList users={MOCKED_USERS}/>
-    </HashRouter>);
+    </HashRouter>
+  );
   const linkElement = screen.getByText(/ellen_ripley/i);
   expect(linkElement).toBeInTheDocument();
 });
@@ -29,24 +30,28 @@ test('user list renders async', async () => {
 });
 
 describe('mocked axios user list', () => {
+  // here we just mock the get method from axios for each test in this block
   beforeAll(() => {
     jest.spyOn(axios, 'get')
   });
 
+  // remove the get method mocking after our tests have run
   afterAll(() => {
     jest.restoreAllMocks()
   });
 
   test('user list renders mocked', async () => {
     axios.get.mockImplementation(() =>
-      Promise.resolve({ data: {users: MOCKED_USERS} }));
+      Promise.resolve({ data: {users: MOCKED_USERS} })
+    );
     const response = await findAllUsers();
     const users = response.users;
 
     render(
       <HashRouter>
         <UserList users={users}/>
-      </HashRouter>);
+      </HashRouter>
+    );
 
     const user = screen.getByText(/ellen_ripley/i);
     expect(user).toBeInTheDocument();
