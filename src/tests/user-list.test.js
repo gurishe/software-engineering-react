@@ -4,7 +4,7 @@ import {HashRouter} from "react-router-dom";
 import {findAllUsers} from "../services/users-service";
 import axios from "axios";
 
-// list our mocked users for testing
+// list of our static mocked users for testing
 const MOCKED_USERS = [
   {username: 'ellen_ripley', password: 'lv426', email: 'repley@weyland.com', id: "123"},
   {username: 'sarah_conor', password: 'illbeback', email: 'sarah@bigjeff.com', id: "234"},
@@ -17,11 +17,12 @@ test('user list renders static user array', () => {
       <UserList users={MOCKED_USERS}/>
     </HashRouter>
   );
-  const linkElement = screen.getByText(/ellen_ripley/i);
+
+  let linkElement = screen.getByText(/ellen_ripley/i);
   expect(linkElement).toBeInTheDocument();
 
-  const secondElement = screen.getByText(/sarah_conor/i);
-  expect(secondElement).toBeInTheDocument();
+  linkElement = screen.getByText(/sarah_conor/i);
+  expect(linkElement).toBeInTheDocument();
 });
 
 // this reaches out to the remote DB, should find a user that we know we have added previously
@@ -30,22 +31,20 @@ test('user list renders async', async () => {
   render(
     <HashRouter>
       <UserList users={users}/>
-    </HashRouter>);
+    </HashRouter>
+  );
+
   const linkElement = screen.getByText(/aliceOG/i);
   expect(linkElement).toBeInTheDocument();
 });
 
-// wrap this test in a describe so that our beforeAll can mock the axios calls we want to test with
-describe('mocked axios user list', () => {
+// wrap this test in a describe block so that our beforeAll can mock the axios calls we want to test with
+describe('mock axios get user list', () => {
   // here we just mock the get method from axios for each test in this block
-  beforeAll(() => {
-    jest.spyOn(axios, 'get')
-  });
+  beforeAll(() => jest.spyOn(axios, 'get'));
 
   // remove the get method mocking after our tests have run
-  afterAll(() => {
-    jest.restoreAllMocks()
-  });
+  afterAll(() => jest.restoreAllMocks());
 
   test('user list renders mocked', async () => {
     // fill the return value of the axios get request with our mocked users list

@@ -15,11 +15,11 @@ const Tuit = ({tuit, deleteTuit}) => {
       </div>
       <div className="w-100">
           <i onClick={() => deleteTuit(tuit._id)} className="fas fa-remove fa-2x fa-pull-right"></i>
-        <h2
-          className="fs-5">
+        <h2 className="fs-5">
           {tuit.postedBy && tuit.postedBy.username}
           @{tuit.postedBy && tuit.postedBy.username} -
-          {tuit.published}</h2>
+          {tuit.published}
+        </h2>
         {tuit.tuit}
         {
           tuit.youtube &&
