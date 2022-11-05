@@ -49,11 +49,17 @@ test('tuit list renders async', async () => {
   );
 
   // check for a NASA tuit we know we have inserted previously
-  const tuitElement = screen.getByText(/NASA's test launch/i);
+  let tuitElement = screen.getByText(/NASA's test launch/i);
+  expect(tuitElement).toBeInTheDocument();
+  // username is in an <h2> element
+  let userElement = screen.getByText(/nasa/i, {selector: 'h2'});
+  expect(userElement).toBeInTheDocument();
+
+  // there should also be an aliceOG tuit we have inserted previously
+  tuitElement = screen.getByText(/I love NASA!/i);
   expect(tuitElement).toBeInTheDocument();
 
-  // username is in an <h2> element
-  const userElement = screen.getByText(/nasa/i, {selector: 'h2'});
+  userElement = screen.getByText(/aliceOG/i, {selector: 'h2'});
   expect(userElement).toBeInTheDocument();
 })
 
