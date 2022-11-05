@@ -4,11 +4,13 @@ import {HashRouter} from "react-router-dom";
 import {findAllUsers} from "../services/users-service";
 import axios from "axios";
 
+// list our mocked users for testing
 const MOCKED_USERS = [
   {username: 'ellen_ripley', password: 'lv426', email: 'repley@weyland.com', id: "123"},
   {username: 'sarah_conor', password: 'illbeback', email: 'sarah@bigjeff.com', id: "234"},
 ]
 
+// if we just use our mocked array, should find our mocked users
 test('user list renders static user array', () => {
   render(
     <HashRouter>
@@ -17,8 +19,12 @@ test('user list renders static user array', () => {
   );
   const linkElement = screen.getByText(/ellen_ripley/i);
   expect(linkElement).toBeInTheDocument();
+
+  const secondElement = screen.getByText(/sarah_conor/i);
+  expect(secondElement).toBeInTheDocument();
 });
 
+// this reaches out to the remote DB, should find a user that we know we have added previously
 test('user list renders async', async () => {
   const users = await findAllUsers();
   render(
@@ -29,6 +35,7 @@ test('user list renders async', async () => {
   expect(linkElement).toBeInTheDocument();
 });
 
+// wrap this test in a describe so that our beforeAll can mock the axios calls we want to test with
 describe('mocked axios user list', () => {
   // here we just mock the get method from axios for each test in this block
   beforeAll(() => {
@@ -41,9 +48,11 @@ describe('mocked axios user list', () => {
   });
 
   test('user list renders mocked', async () => {
+    // fill the return value of the axios get request with our mocked users list
     axios.get.mockImplementation(() =>
       Promise.resolve({ data: {users: MOCKED_USERS} })
     );
+
     const response = await findAllUsers();
     const users = response.users;
 
@@ -53,7 +62,10 @@ describe('mocked axios user list', () => {
       </HashRouter>
     );
 
-    const user = screen.getByText(/ellen_ripley/i);
+    let user = screen.getByText(/ellen_ripley/i);
+    expect(user).toBeInTheDocument();
+
+    user = screen.getByText(/sarah_conor/i);
     expect(user).toBeInTheDocument();
   });
 });
