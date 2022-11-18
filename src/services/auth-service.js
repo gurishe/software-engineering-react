@@ -1,5 +1,7 @@
 import axios from "axios";
-const BASE_URL = 'http://node-express-project.eba-evxbdbh3.us-east-1.elasticbeanstalk.com/api'
+//const BASE_URL = 'http://node-express-project.eba-evxbdbh3.us-east-1.elasticbeanstalk.com/api'
+const BASE_URL = 'http://localhost:4000/api'
+
 
 const AUTH_API = `${BASE_URL}/auth`
 

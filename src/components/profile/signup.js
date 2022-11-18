@@ -12,10 +12,24 @@ const Signup = () => {
     return (
         <div>
             <h1>Signup</h1>
-            <input onChange={(e) => setNewUser({...newUser, username: e.target.value})} />
-            <input onChange={(e) => setNewUser({...newUser, password: e.target.value})} />
-            <input onChange={(e) => setNewUser({...newUser, email: e.target.value})} />
-            <button onClick={signup}>Signup</button>
+            <label>Username: </label>
+            <input
+                className={"mb-1"}
+                onChange={(e) => setNewUser({...newUser, username: e.target.value})}
+            />
+            <br/>
+            <label>Password: </label>
+            <input className={"mb-1"}
+                   onChange={(e) => setNewUser({...newUser, password: e.target.value})}
+            />
+            <br/>
+            <label>Email: </label>
+            <input
+                className={"mb-1"}
+                onChange={(e) => setNewUser({...newUser, email: e.target.value})}
+            />
+            <br/>
+            <button className={"btn btn-success"} onClick={signup}>Signup</button>
         </div>
     );
 }
