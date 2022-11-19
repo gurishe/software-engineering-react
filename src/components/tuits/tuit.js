@@ -3,9 +3,9 @@ import TuitStats from "./tuit-stats";
 import TuitImage from "./tuit-image";
 import TuitVideo from "./tuit-video";
 
-const Tuit = ({tuit, deleteTuit}) => {
+const Tuit = ({tuit, deleteTuit, likeTuit}) => {
   return(
-    <li className="p-2 ttr-tuit list-group-item d-flex rounded-0">
+    <li className="p-2 ttr-tuits list-group-item d-flex rounded-0">
       <div className="pe-2">
         {
           tuit.postedBy &&
@@ -14,7 +14,7 @@ const Tuit = ({tuit, deleteTuit}) => {
         }
       </div>
       <div className="w-100">
-          <i onClick={() => deleteTuit(tuit._id)} className="fas fa-remove fa-2x fa-pull-right"></i>
+          <i onClick={() => deleteTuit(tuit.id)} className="fas fa-remove fa-2x fa-pull-right"></i>
         <h2 className="fs-5">
           {tuit.postedBy && tuit.postedBy.username}
           @{tuit.postedBy && tuit.postedBy.username} -
@@ -29,7 +29,7 @@ const Tuit = ({tuit, deleteTuit}) => {
           tuit.image &&
           <TuitImage tuit={tuit}/>
         }
-        <TuitStats tuit={tuit}/>
+        <TuitStats tuit={tuit} likeTuit={likeTuit}/>
       </div>
     </li>
   );

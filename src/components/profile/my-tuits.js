@@ -18,7 +18,7 @@ const MyTuits = () => {
             .then(findMyTuits);
 
     return(
-        <Tuits tuits={tuits} deleteTuit={deleteTuit}/>
+        <Tuits tuits={tuits} deleteTuit={deleteTuit} refreshTuits={findMyTuits}/>
     );
 };
 
