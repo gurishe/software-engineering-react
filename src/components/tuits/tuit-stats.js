@@ -1,7 +1,6 @@
 import React from "react";
 
 const TuitStats = ({tuit, likeTuit}) => {
-    console.log(tuit)
     return (
       <div className="row mt-2">
         <div className="col">
