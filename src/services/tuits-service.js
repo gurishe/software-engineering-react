@@ -1,7 +1,6 @@
 import axios from "axios";
-//const BASE_URL = "http://node-express-project.eba-evxbdbh3.us-east-1.elasticbeanstalk.com/api"
-const BASE_URL = 'http://localhost:4000/api'
 
+const BASE_URL = process.env.REACT_APP_LOCAL_URL;
 const TUITS_API = `${BASE_URL}/tuits`;
 const USERS_API = `${BASE_URL}/users`;
 
