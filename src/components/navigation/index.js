@@ -4,7 +4,6 @@ import {useLocation, Link} from "react-router-dom";
 
 function Navigation() {
   const {pathname} = useLocation();
-  // console.log(location.pathname);
   const links = [
     {label: 'Tuiter', icon: 'fa-square-t', path: '/tuiter'},
     {label: 'Home', icon: 'fa-home', path: '/home'},
@@ -15,8 +14,8 @@ function Navigation() {
     {label: 'Lists', icon: 'fa-list', path: '/lists'},
     {label: 'Profile', icon: 'fa-user', path: '/profile'},
     {label: 'More', icon: 'fa-circle-ellipsis', path: '/more'},
-    {label: 'Login', icon: 'fa-user', path: '/login'},
-    {label: 'Signup', icon: 'fa-user', path: '/signup'}
+    {label: 'Login', icon: 'fa-right-to-bracket', path: '/login'},
+    {label: 'Signup', icon: 'fa-pencil', path: '/signup'}
   ];
   return (
     <div className="ttr-navigation">
