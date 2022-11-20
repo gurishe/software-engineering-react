@@ -30,16 +30,22 @@ const Profile = () => {
           <h6>@{profile.username}</h6>
           <div className={"d-flex justify-content-between mb-2"}>
               <button
-                  className={"btn btn-primary mb-1"}
+                  className={"btn btn-success mb-1"}
                   onClick={() => navigate('/profile/mytuits')}
               >
                   My Tuits
               </button>
               <button
-                  className={"btn btn-info mb-1"}
+                  className={"btn btn-primary mb-1"}
                   onClick={() => navigate('/profile/mylikes')}
               >
-                My Likes
+                  My Likes
+              </button>
+              <button
+                  className={"btn btn-danger mb-1"}
+                  onClick={() => navigate('/profile/mydislikes')}
+              >
+                  My Dislikes
               </button>
               <button
                   className={"btn btn-warning"}
