@@ -13,17 +13,20 @@ const Signup = () => {
         <div>
             <h1>Signup</h1>
             <label>Username: </label>
+            &nbsp;
             <input
                 className={"mb-1"}
                 onChange={(e) => setNewUser({...newUser, username: e.target.value})}
             />
             <br/>
             <label>Password: </label>
+            &nbsp;
             <input className={"mb-1"}
                    onChange={(e) => setNewUser({...newUser, password: e.target.value})}
             />
             <br/>
             <label>Email: </label>
+            &nbsp;
             <input
                 className={"mb-1"}
                 onChange={(e) => setNewUser({...newUser, email: e.target.value})}

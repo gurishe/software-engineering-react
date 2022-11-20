@@ -35,9 +35,8 @@ const Profile = () => {
               >
                   Go to my tuits
               </button>
-              <br />
               <button
-                  className={"btn btn-warning"}
+                  className={"btn btn-warning fa-pull-right"}
                   onClick={logout}
               >
                   Logout
