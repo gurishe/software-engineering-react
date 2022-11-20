@@ -28,15 +28,21 @@ const Profile = () => {
       <div>
           <h4>{profile.username}</h4>
           <h6>@{profile.username}</h6>
-          <div className={"mb-2"}>
+          <div className={"d-flex justify-content-between mb-2"}>
               <button
                   className={"btn btn-primary mb-1"}
                   onClick={() => navigate('/profile/mytuits')}
               >
-                  Go to my tuits
+                  My Tuits
               </button>
               <button
-                  className={"btn btn-warning fa-pull-right"}
+                  className={"btn btn-info mb-1"}
+                  onClick={() => navigate('/profile/mylikes')}
+              >
+                My Likes
+              </button>
+              <button
+                  className={"btn btn-warning"}
                   onClick={logout}
               >
                   Logout
@@ -51,16 +57,16 @@ const Profile = () => {
                   className="w-100 border-1"
               >
               </textarea>
-          <button
-              className={'btn btn-success rounded-pill fa-pull-right'}
-              onClick={() => {
-                  createTuit(profile.id, tuit);
-                  setTuit('');
-              }}
-              disabled={!tuit || !profile}
-          >
-              Tuit
-          </button>
+              <button
+                  className={'btn btn-success rounded-pill fa-pull-right'}
+                  onClick={() => {
+                      createTuit(profile.id, tuit);
+                      setTuit('');
+                  }}
+                  disabled={!tuit || !profile}
+              >
+                  Tuit
+              </button>
           </div>
       </div>
   );
