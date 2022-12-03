@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Route, Routes, useNavigate} from "react-router-dom";
 import * as service from "../../services/auth-service";
 import {createTuit} from "../../services/tuits-service";
+import MyTuits from "./my-tuits";
+import MyLikes from "./my-likes";
+import MyDislikes from "./my-dislikes";
+import EditProfile from "./edit-profile";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -31,19 +35,19 @@ const Profile = () => {
           <div className={"d-flex justify-content-between mb-2"}>
               <button
                   className={"btn btn-success mb-1"}
-                  onClick={() => navigate('/profile/mytuits')}
+                  onClick={() => navigate('mytuits')}
               >
                   My Tuits
               </button>
               <button
                   className={"btn btn-primary mb-1"}
-                  onClick={() => navigate('/profile/mylikes')}
+                  onClick={() => navigate('mylikes')}
               >
                   My Likes
               </button>
               <button
                   className={"btn btn-danger mb-1"}
-                  onClick={() => navigate('/profile/mydislikes')}
+                  onClick={() => navigate('mydislikes')}
               >
                   My Dislikes
               </button>
@@ -54,7 +58,7 @@ const Profile = () => {
                   Logout
               </button>
           </div>
-          <div>
+          <div className={"pb-5"}>
               <textarea
                   value={tuit}
                   onChange={(e) =>
@@ -74,7 +78,14 @@ const Profile = () => {
                   Tuit
               </button>
           </div>
-      </div>
+
+          <Routes>
+              <Route path="/mytuits" element={<MyTuits/>}/>
+              <Route path="/mylikes" element={<MyLikes/>} />
+              <Route path="/mydislikes" element={<MyDislikes/>} />
+              <Route path="/edit" element={<EditProfile/>}/>
+          </Routes>
+    </div>
   );
 };
 
